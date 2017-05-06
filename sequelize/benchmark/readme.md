@@ -4,6 +4,35 @@
 
 Ce projet contient tous les tests de performances pour tester Sequelize
 
+## Environnement
+
+Tous les tests ont été effectués sur Mac OS. Pour fonctionner correctement, certaines bibliothèques ont besoin que certains modules soient installés dans le système, avant de passer à l'installation, merci de bien installer toutes les dépendances
+
+## Dépendances
+
+docker et docker-compose: Pour créer une base de donnée dans une machine virtuelle.
+
+
+## Installation
+
+Installer Sequelize CLI pour gérer les migrations
+`npm i -g sequelize-cli`
+
+Installer les dépendances
+`npm install`
+
+Lancer docker et la base Postgres
+`docker-compose up`
+
+Faire la migration des tables
+`sequelize db:migrate`
+
+Ajouter des données dans les tables
+`sequelize db:seed:all`
+
+Lancer le test brut
+`npm run test:brut`
+
 ## Tests
 
 ### Performances brute

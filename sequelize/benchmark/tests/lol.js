@@ -1,11 +1,11 @@
-var pool = require('./../utils/native');
+var knex = require('./../utils/knex');
 
-pool.connect(function (err, client, done) {
-  if (err) return console.error('error fetching client from pool', err);
-
-  client.query('SELECT * from "user"', function (err, result) {
-    console.log(result.rows.length);
-    done(err);
-    if (err) return console.error('error running query', err);
-  });
-});
+knex.select('*')
+  .from('user')
+  .where(function() {
+    this.where('age', '>=', '20').where('age', '<=', '70')
+  })
+  .then(function(rows) {
+    console.log(rows.length);
+  })
+  .catch(function(error) { throw error});
